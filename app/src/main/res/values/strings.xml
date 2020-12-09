@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CoronaApp</string>
+    <string name="corona_title">Welkom bij de corona app</string>
+    <string name="corona_description">Hier kan je alle informatie zien van covid 19</string>
+    <string name="image_description">corona image</string>
+    <string name="total_contamination">Totaal aantal besmettingen vandaag</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
