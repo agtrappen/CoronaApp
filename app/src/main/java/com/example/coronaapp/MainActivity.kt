@@ -11,7 +11,7 @@ import androidx.navigation.ui.NavigationUI
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_title)
+        setContentView(R.layout.fragment_symptoms)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
