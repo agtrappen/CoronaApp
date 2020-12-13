@@ -7,11 +7,7 @@
     <fragment
         android:id="@+id/titleFragment"
         android:name="com.example.coronaapp.TitleFragment"
-        android:label="TitleFragment" >
-        <action
-            android:id="@+id/action_titleFragment_to_symptomsFragment2"
-            app:destination="@id/symptomsFragment2" />
-    </fragment>
+        android:label="TitleFragment" />
     <fragment
         android:id="@+id/symptomsFragment2"
         android:name="com.example.coronaapp.symptomsFragment"
