@@ -3,9 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/symptomsFragment4">
+    app:startDestination="@id/titleFragment">
     <fragment
-        android:id="@+id/symptomsFragment4"
+        android:id="@+id/titleFragment"
+        android:name="com.example.coronaapp.TitleFragment"
+        android:label="TitleFragment" />
+    <fragment
+        android:id="@+id/symptomsFragment"
         android:name="com.example.coronaapp.symptomsFragment"
         android:label="symptomsFragment" />
 </navigation>
