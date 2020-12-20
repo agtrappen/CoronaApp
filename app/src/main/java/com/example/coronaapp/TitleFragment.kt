@@ -1,6 +1,7 @@
 package com.example.coronaapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -12,6 +13,8 @@ class TitleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("TEST", "HEY")
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_title, container, false)
     }

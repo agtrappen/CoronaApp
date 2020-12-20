@@ -11,12 +11,12 @@ interface CoronaSymptomsDao {
     @Insert
     fun insert(symptoms: CoronaSymptoms)
 
-    @Query("SELECT * from corona_symptoms WHERE symptomId = :key")
+    @Query("SELECT * from symptoms WHERE symptomId = :key")
     fun get(key: Long): CoronaSymptoms
 
-    @Query("DELETE FROM corona_symptoms")
+    @Query("DELETE FROM symptoms")
     fun clear()
 
-    @Query("SELECT * FROM corona_symptoms ORDER BY symptomId DESC")
+    @Query("SELECT * FROM symptoms ORDER BY symptomId DESC")
     fun getAllSymptoms(): LiveData<List<CoronaSymptoms>>
 }

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "corona_symptoms")
+@Entity(tableName = "symptoms")
 data class CoronaSymptoms(
         @PrimaryKey(autoGenerate = true)
         var symptomId: Long = 0L,
