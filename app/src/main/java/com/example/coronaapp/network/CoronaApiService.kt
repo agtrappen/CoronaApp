@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
-private const val BASE_URL = "https://api.covid19api.com/"
+private const val BASE_URL = "https://api.apify.com/"
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
@@ -13,7 +13,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CoronaApiService {
-    @GET("summary")
+    @GET("v2/key-value-stores/vqnEUe7VtKNMqGqFF/records/LATEST?disableRedirect=true")
     fun getProperties():
             Call<String>
 }
