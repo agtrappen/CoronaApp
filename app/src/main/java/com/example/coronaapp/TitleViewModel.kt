@@ -4,39 +4,46 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.coronaapp.network.CoronaApi
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import retrofit2.await
 
 class TitleViewModel : ViewModel() {
+    private val _infected = MutableLiveData<String>()
+    val infected: LiveData<String>
+        get() = _infected
 
-    // The internal MutableLiveData String that stores the status of the most recent request
-    private val _response = MutableLiveData<String>()
 
-    // The external immutable LiveData for the request status String
-    val response: LiveData<String>
-        get() = _response
+    private val _deceased = MutableLiveData<String>()
+    val deceased: LiveData<String>
+        get() = _deceased
 
-    /**
-     * Call getMarsRealEstateProperties() on init so we can display status immediately.
-     */
+
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
+
     init {
-        getMarsRealEstateProperties()
+        getCoronaProperties()
     }
 
-    /**
-     * Sets the value of the status LiveData to the Mars API status.
-     */
-    private fun getMarsRealEstateProperties() {
-        CoronaApi.retrofitService.getProperties().enqueue(object: Callback<String> {
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                _response.value = "Failure: " + t.message
+    private fun getCoronaProperties() {
+        coroutineScope.launch {
+            var getPropertiesDeferred = CoronaApi.retrofitService.getProperties()
+            try {
+                var listResult = getPropertiesDeferred.await()
+                _infected.value = "${listResult.infected}"
+                _deceased.value = "${listResult.deceased}"
+            } catch (e: Exception) {
+                _infected.value = "Failure: ${e.message}"
+                _deceased.value = "Failure: ${e.message}"
             }
+        }
+    }
 
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                _response.value = response.body()
-            }
-        })
-
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }
