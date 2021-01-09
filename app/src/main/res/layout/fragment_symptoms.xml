@@ -8,12 +8,15 @@
         <variable
             name="symptomsViewModel"
             type="com.example.coronaapp.SymptomsViewModel" />
+        <variable
+            name="symptomsFragment"
+            type="com.example.coronaapp.SymptomsFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".symptomsFragment">
+        tools:context=".SymptomsFragment">
 
         <TextView
             android:id="@+id/symptoms_title"
@@ -33,6 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,6 +72,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@{symptomsViewModel.symptomsString4}" />
+
+            <Button
+                android:id="@+id/advice_button"
+                android:onClick="@{() -> symptomsFragment.checkSymptoms()}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

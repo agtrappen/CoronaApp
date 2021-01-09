@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">CoronaApp</string>
-    <string name="corona_title">Welkom bij de corona app</string>
-    <string name="corona_description">Hier kan je alle informatie zien van covid 19</string>
+    <string name="corona_title">Welcome on the corona app</string>
+    <string name="corona_description">Here you can find all the information about covid 19</string>
     <string name="image_description">corona image</string>
-    <string name="total_contamination">Totaal aantal besmettingen: </string>
+    <string name="total_contamination">Total infected: </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="symptoms_title">Symtomen</string>
-    <string name="deaths_title">Totaal overleden:</string>
+    <string name="symptoms_title">Symptoms</string>
+    <string name="deaths_title">Total deaths:</string>
+    <string name="advice_button_text">Show Advice</string>
+    <string name="country"> </string>
 </resources>

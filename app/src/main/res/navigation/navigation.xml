@@ -10,6 +10,6 @@
         android:label="TitleFragment" />
     <fragment
         android:id="@+id/symptomsFragment"
-        android:name="com.example.coronaapp.symptomsFragment"
+        android:name="com.example.coronaapp.SymptomsFragment"
         android:label="symptomsFragment" />
 </navigation>

@@ -18,8 +18,6 @@ abstract class CoronaDatabase : RoomDatabase() {
         fun getInstance(context: Context) : CoronaDatabase {
             synchronized(this) {
                 var instance = INSTANCE
-                Log.d("Test", "Hey!")
-
 
                 if (instance == null) {
                     instance = Room.databaseBuilder(

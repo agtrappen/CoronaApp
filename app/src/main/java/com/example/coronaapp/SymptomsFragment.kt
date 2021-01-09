@@ -3,6 +3,7 @@ package com.example.coronaapp
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -11,11 +12,10 @@ import androidx.navigation.ui.NavigationUI
 import com.example.coronaapp.databinding.FragmentSymptomsBindingImpl
 import com.example.coronaapp.database.CoronaDatabase
 import com.example.coronaapp.database.CoronaSymptomsDao
+import kotlinx.android.synthetic.main.fragment_symptoms.*
 
-class symptomsFragment : Fragment() {
+class SymptomsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Log.d("TEST", "HEY")
-
         val binding: FragmentSymptomsBindingImpl = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_symptoms, container, false
         )
@@ -36,6 +36,10 @@ class symptomsFragment : Fragment() {
         setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    fun checkSymptoms() {
+        Log.i("Test", "Testovich")
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

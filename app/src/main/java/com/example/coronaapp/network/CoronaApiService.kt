@@ -18,14 +18,13 @@ private val moshi = Moshi.Builder()
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .baseUrl(BASE_URL)
     .build()
 
 interface CoronaApiService {
-    @GET("v2/key-value-stores/vqnEUe7VtKNMqGqFF/records/LATEST?disableRedirect=true")
-    fun getProperties():
-            Call<CoronaProperty>
+    @GET("v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true?")
+    suspend fun getProperties():
+            List<CoronaProperty>
 }
 
 object CoronaApi {

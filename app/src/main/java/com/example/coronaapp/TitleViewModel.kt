@@ -1,49 +1,60 @@
 package com.example.coronaapp
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.coronaapp.network.CoronaApi
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import com.example.coronaapp.network.CoronaProperty
+import com.google.android.gms.common.util.ArrayUtils.contains
 import kotlinx.coroutines.launch
-import retrofit2.await
+import java.util.*
 
 class TitleViewModel : ViewModel() {
-    private val _infected = MutableLiveData<String>()
-    val infected: LiveData<String>
-        get() = _infected
+    private val _status = MutableLiveData<String>()
+    val status: LiveData<String>
+        get() = _status
 
+    private val _country = MutableLiveData<String>()
+    val country: LiveData<String>
+        get() = _country
 
-    private val _deceased = MutableLiveData<String>()
-    val deceased: LiveData<String>
-        get() = _deceased
+    private val _property = MutableLiveData<CoronaProperty>()
+    val property: LiveData<CoronaProperty>
+        get() = _property
 
-
-    private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
+    private val _location = MutableLiveData<String>()
+    val location: LiveData<String>
+        get() = _location
 
     init {
         getCoronaProperties()
     }
 
+
     private fun getCoronaProperties() {
-        coroutineScope.launch {
-            var getPropertiesDeferred = CoronaApi.retrofitService.getProperties()
+        viewModelScope.launch {
             try {
-                var listResult = getPropertiesDeferred.await()
-                _infected.value = "${listResult.infected}"
-                _deceased.value = "${listResult.deceased}"
+                var listResult = CoronaApi.retrofitService.getProperties()
+                _country.value = MainActivity.country.name
+                _location.value = MainActivity.country.location
+
+                if (listResult.size > 0) {
+                    var i = 0
+                    for (coronaProperty in listResult) {
+                        Log.d("Test", coronaProperty.country)
+
+                        if (coronaProperty.country == String.format(Locale("en"), MainActivity.country.name)) {
+                            _property.value = listResult[i]
+                        }
+
+                        i++
+                    }
+                }
             } catch (e: Exception) {
-                _infected.value = "Failure: ${e.message}"
-                _deceased.value = "Failure: ${e.message}"
+                _status.value = "Failure: ${e.message}"
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
     }
 }
