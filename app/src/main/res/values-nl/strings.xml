@@ -1,20 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CoronaApp</string>
-    <string name="corona_title">Welkom bij de corona app</string>
-    <string name="corona_description">Hier kan je alle informatie zien van covid 19</string>
-    <string name="image_description">corona image</string>
-    <string name="total_contamination">Totaal aantal besmettingen: </string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="symptoms_title">Symtomen</string>
-    <string name="deaths_title">Totaal overleden:</string>
-    <string name="advice_button_text">Toon advies</string>
-    <string name="country"> </string>
     <string name="information_title">Informatie</string>
     <string name="humidity_title">Luchtvochtigheid</string>
     <string name="humidity_value" />
     <string name="information_menu_item">Information</string>
     <string name="corona_notification" />
-    <string name="temperature_title" >Temperatuur</string>
+    <string name="temperature_title" />
     <string name="temperature_value" />
     <string name="information_content">De relatie tussen luchtvochtigheid en verspreiding van het corona virus is wetenschappenlijk aantoonbaar. Dit betekent dat wanneer de luchtvochtigheid tot 30% is, het overdragen van het virus het minst succesvol is. Het virus houdt geen stand bij deze luchtvochtigheid. Bij een luchtvochtigheid tussen de 30 en 40 % houdt het virus het meeste stand. Dit betekent dat de verspredingskans het hoogst is. Alle percentages buiten deze genoemde, zorgen voor een matige omstandigheid voor het virus en is het overdragen niet uitgesloten maar ook niet heel makkelijk.</string>
 </resources>

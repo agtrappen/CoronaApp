@@ -5,24 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="symptomsViewModel"
-            type="com.example.coronaapp.SymptomsViewModel" />
-        <variable
-            name="symptomsFragment"
-            type="com.example.coronaapp.SymptomsFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SymptomsFragment">
+        tools:context=".InformationFragment">
 
         <TextView
             android:id="@+id/information_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/symptoms_title"
+            android:text="@string/information_title"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -45,41 +39,66 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.324">
 
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@{symptomsViewModel.symptomsString1}" />
-
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@{symptomsViewModel.symptomsString2}" />
-
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <TextView
+                android:id="@+id/information_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@{symptomsViewModel.symptomsString3}" />
+                android:text="@string/information_content" />
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@{symptomsViewModel.symptomsString4}" />
-
-            <Button
-                android:id="@+id/advice_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="@{() -> symptomsFragment.checkSymptoms()}"
-                android:text="@string/advice_button_text" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <TextView
+                android:id="@+id/temperature_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/temperature_title"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/temperature_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/temperature_value"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/humidity_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/humidity_title"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/humidity_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/humidity_value"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/corona_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/corona_notification"
+                android:textAlignment="center" />
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

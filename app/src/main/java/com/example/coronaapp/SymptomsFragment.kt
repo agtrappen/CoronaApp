@@ -15,6 +15,10 @@ import com.example.coronaapp.database.CoronaSymptomsDao
 import kotlinx.android.synthetic.main.fragment_symptoms.*
 
 class SymptomsFragment : Fragment() {
+    private val viewModel: TitleViewModel by lazy {
+        ViewModelProvider(this).get(TitleViewModel::class.java)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentSymptomsBindingImpl = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_symptoms, container, false

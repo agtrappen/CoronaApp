@@ -10,4 +10,12 @@
     <string name="deaths_title">Total deaths:</string>
     <string name="advice_button_text">Show Advice</string>
     <string name="country"> </string>
+    <string name="information_title">Informatie</string>
+    <string name="humidity_title">Humidity</string>
+    <string name="humidity_value" />
+    <string name="information_menu_item">Information</string>
+    <string name="corona_notification" />
+    <string name="temperature_title">Temperature</string>
+    <string name="temperature_value" />
+    <string name="information_content">The relationship between humidity and the spread of the coronavirus is scientifically demonstrable. This means that when the humidity is up to 30%, transmitting the virus is the least successful. The virus cannot withstand this humidity. The virus is most resistant at a humidity of between 30 and 40%. This means that the spread of the chance of spreading the virus is the highest. All percentages outside these mentioned, provide a moderate circumstance for the virus, and transmission is not excluded, but also not very easy.</string>
 </resources>
