@@ -17,4 +17,7 @@
     <string name="temperature_title" >Temperatuur</string>
     <string name="temperature_value" />
     <string name="information_content">De relatie tussen luchtvochtigheid en verspreiding van het corona virus is wetenschappenlijk aantoonbaar. Dit betekent dat wanneer de luchtvochtigheid tot 30% is, het overdragen van het virus het minst succesvol is. Het virus houdt geen stand bij deze luchtvochtigheid. Bij een luchtvochtigheid tussen de 30 en 40 % houdt het virus het meeste stand. Dit betekent dat de verspredingskans het hoogst is. Alle percentages buiten deze genoemde, zorgen voor een matige omstandigheid voor het virus en is het overdragen niet uitgesloten maar ook niet heel makkelijk.</string>
+    <string name="advice_text" />
+    <string name="advice_text_positive">Het advies op basis van uw ingevulde symptomen luidt dat u zich moeten laten testen op corona. U kunt dit doen op de website van de rijksoverheid door in te loggen met uw digiD of telefonisch contact op te nemen met:0800-1202</string>
+    <string name="advice_text_negative">Het advies op basis van uw ingevulde symptomen luidt dat u zich niet hoeft te laten testen op corona.</string>
 </resources>
