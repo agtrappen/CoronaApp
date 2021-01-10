@@ -51,8 +51,6 @@ class InformationFragment : Fragment(), SensorEventListener {
         if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
             temperature_value?.text = "${event.values[0]} °C"
         } else if (event.sensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY) {
-            Log.d("debug", "${event.values[0]} %")
-            Log.d("value", "${humidity_value?.text}")
             humidity_value?.text = "${event.values[0]}  %"
             if (event.values[0] < 30) {
                 corona_notification?.text = "De kans op overdragen van corona is vanwege luchtvochtigheid van ${event.values[0]}% heel klein"

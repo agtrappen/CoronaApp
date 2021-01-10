@@ -37,13 +37,13 @@ class TitleViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 var listResult = CoronaApi.retrofitService.getProperties()
-                _country.value = MainActivity.country.name
-                _location.value = MainActivity.country.location
+                _country.value = TitleFragment.country.name
+                _location.value = TitleFragment.country.location
 
                 if (listResult.size > 0) {
                     var i = 0
                     for (coronaProperty in listResult) {
-                        if (coronaProperty.country == String.format(Locale("en"), MainActivity.country.name)) {
+                        if (coronaProperty.country == String.format(Locale("en"), TitleFragment.country.name)) {
                             _property.value = listResult[i]
                         }
 
