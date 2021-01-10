@@ -9,6 +9,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.location.Geocoder
 import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
@@ -25,14 +26,11 @@ import kotlinx.android.synthetic.main.fragment_information.*
 import kotlinx.android.synthetic.main.fragment_title.*
 import java.util.*
 
-class MainActivity : AppCompatActivity(), SensorEventListener {
+class MainActivity : AppCompatActivity(), LocationListener {
 
     //Declaring the needed Variables
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
-    private lateinit var sensorManager: SensorManager
-    private var humidity: Sensor? = null
-    private var temperature: Sensor? = null
     val PERMISSION_ID = 1010
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,49 +39,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         RequestPermission()
-        /* fusedLocationProviderClient.lastLocation.addOnSuccessListener{location: Location? ->
-             textView.text = location?.latitude.toString() + "," + location?.longitude.toString()
-         }*/
-
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        humidity = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY)
-        temperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)
 
         getLastLocation()
     }
-
-    override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
-        // Do something here if sensor accuracy changes.
-    }
-
-    override fun onSensorChanged(event: SensorEvent) {
-        if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-            temperature_value.text = "${event.values[0]} °C"
-        } else {
-            humidity_value.text = "${event.values[0]}  %"
-            if (event.values[0] < 30) {
-                corona_notification.text = "De kans op overdragen van corona is vanwege luchtvochtigheid van ${event.values[0]}% heel klein"
-            } else if (event.values[0] >= 30 && event.values[0] <= 40) {
-                corona_notification.text = "De kans op overdragen van corona is vanwege luchtvochtigheid van ${event.values[0]}% het grootst"
-            } else {
-                corona_notification.text = "De kans op overdragen van corona is vanwege luchtvochtigheid van ${event.values[0]}% matig"
-            }
-        }
-    }
-
-    override fun onResume() {
-        // Register a listener for the sensor.
-        super.onResume()
-        sensorManager.registerListener(this, humidity, SensorManager.SENSOR_DELAY_NORMAL)
-        sensorManager.registerListener(this, temperature, SensorManager.SENSOR_DELAY_NORMAL)
-    }
-
-    override fun onPause() {
-        // Be sure to unregister the sensor when the activity pauses.
-        super.onPause()
-        sensorManager.unregisterListener(this)
-    }
-
 
     fun getLastLocation(){
         if(CheckPermission()){
@@ -225,5 +183,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     object country {
         var name = ""
         var location = ""
+    }
+
+    override fun onLocationChanged(location: Location) {
+        Log.d("debug", "called!")
     }
 }

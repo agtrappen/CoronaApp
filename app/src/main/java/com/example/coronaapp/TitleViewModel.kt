@@ -43,8 +43,6 @@ class TitleViewModel : ViewModel() {
                 if (listResult.size > 0) {
                     var i = 0
                     for (coronaProperty in listResult) {
-                        Log.d("Test", coronaProperty.country)
-
                         if (coronaProperty.country == String.format(Locale("en"), MainActivity.country.name)) {
                             _property.value = listResult[i]
                         }

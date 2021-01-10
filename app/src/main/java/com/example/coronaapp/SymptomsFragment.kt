@@ -1,18 +1,21 @@
 package com.example.coronaapp
 
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Button
-import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.example.coronaapp.databinding.FragmentSymptomsBindingImpl
 import com.example.coronaapp.database.CoronaDatabase
-import com.example.coronaapp.database.CoronaSymptomsDao
-import kotlinx.android.synthetic.main.fragment_symptoms.*
+import com.example.coronaapp.databinding.FragmentSymptomsBindingImpl
+import kotlinx.android.synthetic.main.fragment_information.*
 
 class SymptomsFragment : Fragment() {
     private val viewModel: TitleViewModel by lazy {
