@@ -9,9 +9,12 @@ import com.example.coronaapp.network.CoronaApi
 import com.example.coronaapp.network.CoronaProperty
 import com.google.android.gms.common.util.ArrayUtils.contains
 import kotlinx.coroutines.launch
+import kotlinx.android.synthetic.main.fragment_title.textView2
 import java.util.*
 
 class TitleViewModel : ViewModel() {
+    private val titleFragment = TitleFragment()
+
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
@@ -36,10 +39,8 @@ class TitleViewModel : ViewModel() {
     private fun getCoronaProperties() {
         viewModelScope.launch {
             try {
+                Log.d("Test", "hhdsdfs")
                 var listResult = CoronaApi.retrofitService.getProperties()
-                _country.value = TitleFragment.country.name
-                _location.value = TitleFragment.country.location
-
                 if (listResult.size > 0) {
                     var i = 0
                     for (coronaProperty in listResult) {
@@ -51,6 +52,7 @@ class TitleViewModel : ViewModel() {
                     }
                 }
             } catch (e: Exception) {
+                Log.d("failure", "Failure: ${e.message}")
                 _status.value = "Failure: ${e.message}"
             }
         }

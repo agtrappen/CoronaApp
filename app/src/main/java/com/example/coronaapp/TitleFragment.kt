@@ -179,13 +179,25 @@ class TitleFragment : Fragment(), LocationListener {
         var geoCoder = Geocoder(requireActivity(), Locale.ENGLISH)
         var Adress = geoCoder.getFromLocation(lat,long,3)
 
-        cityName = Adress.get(0).locality
-        countryName = Adress.get(0).countryName
+        if (Adress.get(0).locality !== null) {
+            cityName = Adress.get(0).locality
+        } else {
+            cityName = ""
+        }
+
+        if (Adress.get(0).countryName !== null) {
+            countryName = Adress.get(0).countryName
+        } else {
+            cityName = ""
+        }
+
 
         var location = "${cityName}, ${countryName}"
 
         country.name = countryName
         country.location = "${cityName}, ${countryName}"
+
+        textView.text = location
 
         return location
     }
@@ -194,6 +206,7 @@ class TitleFragment : Fragment(), LocationListener {
         var name = ""
         var location = ""
     }
+
 
     override fun onLocationChanged(location: Location) {
         Log.d("debug", "called!")
