@@ -10,6 +10,7 @@ import com.example.coronaapp.network.CoronaProperty
 import com.google.android.gms.common.util.ArrayUtils.contains
 import kotlinx.coroutines.launch
 import kotlinx.android.synthetic.main.fragment_title.textView2
+import java.text.DecimalFormat
 import java.util.*
 
 class TitleViewModel : ViewModel() {
@@ -33,6 +34,11 @@ class TitleViewModel : ViewModel() {
 
     init {
         getCoronaProperties()
+    }
+
+    fun formatNumber(number: Int): String? {
+        val dec = DecimalFormat("#,###.##")
+        return dec.format(number)
     }
 
 

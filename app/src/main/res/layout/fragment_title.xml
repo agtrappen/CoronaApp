@@ -40,7 +40,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.property.infected}"
+                android:text="@{viewModel.formatNumber(viewModel.property.infected)}"
                 android:textAlignment="center"
                 android:textStyle="bold" />
 
@@ -55,7 +55,7 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.property.deceased}"
+                android:text="@{viewModel.formatNumber(viewModel.property.deceased)}"
                 android:textAlignment="center"
                 android:textStyle="bold" />
         </LinearLayout>
