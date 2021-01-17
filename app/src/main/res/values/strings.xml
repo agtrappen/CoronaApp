@@ -22,4 +22,6 @@
     <string name="cancel_text">OK</string>
     <string name="advice_text_positive" />
     <string name="advice_text_negative" />
+    <string name="homeTitle">Home</string>
+    <string name="symptomsTitle">Symtpoms</string>
 </resources>
