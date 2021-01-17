@@ -5,6 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.coronaapp.database.CoronaSymptomsDao
 
+/**
+ * Symptoms view model factory
+ *
+ * @property dataSource defenise the Database
+ * @property application
+ * @constructor Create empty Symptoms view model factory
+ */
 class SymptomsViewModelFactory(
         private val dataSource: CoronaSymptomsDao,
         private val application: Application) : ViewModelProvider.Factory {

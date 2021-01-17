@@ -13,6 +13,11 @@ import kotlinx.android.synthetic.main.fragment_title.textView2
 import java.text.DecimalFormat
 import java.util.*
 
+/**
+ * Title view model
+ *
+ * @constructor Create empty Title view model
+ */
 class TitleViewModel : ViewModel() {
     private val titleFragment = TitleFragment()
 
@@ -36,6 +41,12 @@ class TitleViewModel : ViewModel() {
         getCoronaProperties()
     }
 
+    /**
+     * Format number
+     *
+     * @param number
+     * @return
+     */
     fun formatNumber(number: Int): String? {
         val dec = DecimalFormat("#,###.##")
         return dec.format(number)
@@ -45,7 +56,6 @@ class TitleViewModel : ViewModel() {
     private fun getCoronaProperties() {
         viewModelScope.launch {
             try {
-                Log.d("Test", "hhdsdfs")
                 var listResult = CoronaApi.retrofitService.getProperties()
                 if (listResult.size > 0) {
                     var i = 0

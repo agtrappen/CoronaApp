@@ -17,6 +17,11 @@ import androidx.navigation.ui.NavigationUI
 import com.example.coronaapp.databinding.FragmentInformationBindingImpl
 import kotlinx.android.synthetic.main.fragment_information.*
 
+/**
+ * Information fragment
+ *
+ * @constructor Create empty Information fragment
+ */
 class InformationFragment : Fragment(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private var humidity: Sensor? = null
@@ -31,6 +36,12 @@ class InformationFragment : Fragment(), SensorEventListener {
         val binding: FragmentInformationBindingImpl = DataBindingUtil.inflate(
             inflater, R.layout.fragment_information, container, false
         )
+        /**
+         * Creates the information view
+         * @param sensorManager lets us access and manage the device's sensors.
+         * @param humidity defines the humidity device sensor.
+         * @param temperature defines the temperature device sensor.
+         */
 
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         humidity = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY)
@@ -43,11 +54,13 @@ class InformationFragment : Fragment(), SensorEventListener {
         return binding.root
     }
 
-    override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
-        // Do something here if sensor accuracy changes.
-    }
-
     override fun onSensorChanged(event: SensorEvent) {
+        /**
+         * Creates the information about the humidity and tempratures
+         * @param temperature_value defines the temperature and display's this in the view
+         * @param humidity_value defines the humidity and display's this in the view
+         * @param corona_notification defines the notification text based on the humidity and display's this in the view
+         */
         if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
             temperature_value?.text = "${event.values[0]} °C"
         } else if (event.sensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY) {
@@ -63,14 +76,18 @@ class InformationFragment : Fragment(), SensorEventListener {
     }
 
     override fun onResume() {
-        // Register a listener for the sensor.
+        /**
+         * Register a listener for the sensor.
+         */
         super.onResume()
         sensorManager.registerListener(this, humidity, SensorManager.SENSOR_DELAY_NORMAL)
         sensorManager.registerListener(this, temperature, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
     override fun onPause() {
-        // Be sure to unregister the sensor when the activity pauses.
+        /**
+         * Unregister a listener for the sensor when the activity pauses.
+         */
         super.onPause()
         sensorManager.unregisterListener(this)
     }

@@ -26,6 +26,11 @@ import kotlinx.android.synthetic.main.fragment_information.*
 import kotlinx.android.synthetic.main.fragment_title.*
 import java.util.*
 
+/**
+ * Main activity
+ *
+ * @constructor Create empty Main activity
+ */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

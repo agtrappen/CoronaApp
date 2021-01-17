@@ -23,6 +23,11 @@ import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.fragment_title.*
 import java.util.*
 
+/**
+ * Title fragment
+ *
+ * @constructor Create empty Title fragment
+ */
 class TitleFragment : Fragment(), LocationListener {
     private val viewModel: TitleViewModel by lazy {
         ViewModelProvider(this).get(TitleViewModel::class.java)
@@ -53,6 +58,10 @@ class TitleFragment : Fragment(), LocationListener {
         return binding.root
     }
 
+    /**
+     * Get last device location
+     *
+     */
     fun getLastLocation(){
         if(CheckPermission()){
             if(isLocationEnabled()){
@@ -64,13 +73,6 @@ class TitleFragment : Fragment(), LocationListener {
                                 Manifest.permission.ACCESS_COARSE_LOCATION
                         ) != PackageManager.PERMISSION_GRANTED
                 ) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
                     return
                 }
                 fusedLocationProviderClient.lastLocation.addOnCompleteListener { task->
@@ -91,6 +93,10 @@ class TitleFragment : Fragment(), LocationListener {
     }
 
 
+    /**
+     * New location data
+     *
+     */
     fun NewLocationData(){
         var locationRequest =  LocationRequest()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
@@ -106,13 +112,6 @@ class TitleFragment : Fragment(), LocationListener {
                         Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return
         }
         fusedLocationProviderClient!!.requestLocationUpdates(
@@ -128,11 +127,12 @@ class TitleFragment : Fragment(), LocationListener {
             textView.text = getCityName(lastLocation.latitude,lastLocation.longitude)
         }
     }
-
+    /**
+     * Checks if we have permission
+     * @return true if we have
+     * @return false if not
+     */
     private fun CheckPermission():Boolean{
-        //this function will return a boolean
-        //true: if we have permission
-        //false if not
         if(
                 ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -144,8 +144,12 @@ class TitleFragment : Fragment(), LocationListener {
 
     }
 
+    /**
+     * Request permission this function will allows us to tell the user to request the necessary permision if they are not garented
+     *
+     */
     fun RequestPermission(){
-        //this function will allows us to tell the user to requesut the necessary permsiion if they are not garented
+
         ActivityCompat.requestPermissions(
                 requireActivity(),
                 arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,android.Manifest.permission.ACCESS_FINE_LOCATION),
@@ -153,9 +157,12 @@ class TitleFragment : Fragment(), LocationListener {
         )
     }
 
+    /**
+     * Is location enabled this function will return to us the state of the location service
+     * @return true if the gps or the network provider is enabled
+     * @return false if not
+     */
     fun isLocationEnabled():Boolean{
-        //this function will return to us the state of the location service
-        //if the gps or the network provider is enabled then it will return true otherwise it will return false
         var locationManager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
@@ -173,6 +180,10 @@ class TitleFragment : Fragment(), LocationListener {
         }
     }
 
+    /**
+     * Function to create a city + country name based on a geocode and displays this in the view
+     * @return city + country name
+     */
     private fun getCityName(lat: Double,long: Double):String{
         var cityName:String = ""
         var countryName = ""

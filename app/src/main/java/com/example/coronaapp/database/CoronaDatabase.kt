@@ -7,6 +7,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
+/**
+ * Corona database
+ * @constructor Create empty Corona database
+ */
 @Database(entities = [CoronaSymptoms::class], version = 1, exportSchema = false)
 abstract class CoronaDatabase : RoomDatabase() {
     abstract val coronaSymptomsDao: CoronaSymptomsDao

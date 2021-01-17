@@ -15,12 +15,20 @@ import com.example.coronaapp.databinding.FragmentSymptomsBindingImpl
 import kotlinx.android.synthetic.main.fragment_symptoms.*
 import java.util.*
 
+/**
+ * Symptoms fragment
+ *
+ * @constructor Create empty Symptoms fragment
+ */
 class SymptomsFragment : Fragment() {
     private val viewModel: TitleViewModel by lazy {
         ViewModelProvider(this).get(TitleViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        /**
+         * Creates the view for the symptoms and defines the necessary variables
+         */
         val binding: FragmentSymptomsBindingImpl = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_symptoms, container, false
         )
@@ -44,6 +52,10 @@ class SymptomsFragment : Fragment() {
     }
 
     private fun showDialog() {
+        /**
+         * Creates the symptoms dialog with the logic to display the right advice
+         * @param count Keeps track of the number of symptoms
+         */
         val currentLanguage: String = Locale.getDefault().getDisplayLanguage()
 
         val dialog = MaterialDialog(requireContext())

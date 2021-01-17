@@ -10,6 +10,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 
+/**
+ * Symptoms view model
+ *
+ * @property database
+ * @constructor
+ *
+ * @param application
+ */
 class SymptomsViewModel (
         val database: CoronaSymptomsDao,
         application: Application) : AndroidViewModel(application) {
