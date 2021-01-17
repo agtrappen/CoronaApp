@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/titleFragment"
-        android:title="Home" />
+        android:title="@string/homeTitle" />
     <item
         android:id="@+id/symptomsFragment"
-        android:title="Symptoms" />
+        android:title="@string/symptomsTitle" />
     <item
         android:id="@+id/informationFragment"
         android:title="@string/information_menu_item" />

@@ -3,7 +3,7 @@
     <string name="information_title">Informatie</string>
     <string name="humidity_title">Luchtvochtigheid</string>
     <string name="humidity_value" />
-    <string name="information_menu_item">Information</string>
+    <string name="information_menu_item">Informatie</string>
     <string name="corona_notification" />
     <string name="temperature_title" />
     <string name="temperature_value" />
@@ -11,4 +11,6 @@
     <string name="advice_text" />
     <string name="advice_text_positive">Het advies op basis van uw ingevulde symptomen luidt dat u zich moeten laten testen op corona. U kunt dit doen op de website van de rijksoverheid door in te loggen met uw digiD of telefonisch contact op te nemen met:0800-1202</string>
     <string name="advice_text_negative">Het advies op basis van uw ingevulde symptomen luidt dat u zich niet hoeft te laten testen op corona.</string>
+    <string name="homeTitle">Homepagina</string>
+    <string name="symptomsTitle">Symptomen</string>
 </resources>

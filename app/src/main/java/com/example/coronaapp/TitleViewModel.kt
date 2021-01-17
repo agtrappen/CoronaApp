@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coronaapp.network.CoronaApi
 import com.example.coronaapp.network.CoronaProperty
-import com.google.android.gms.common.util.ArrayUtils.contains
 import kotlinx.coroutines.launch
-import kotlinx.android.synthetic.main.fragment_title.textView2
 import java.text.DecimalFormat
 import java.util.*
 
@@ -41,11 +39,9 @@ class TitleViewModel : ViewModel() {
         return dec.format(number)
     }
 
-
     private fun getCoronaProperties() {
         viewModelScope.launch {
             try {
-                Log.d("Test", "hhdsdfs")
                 var listResult = CoronaApi.retrofitService.getProperties()
                 if (listResult.size > 0) {
                     var i = 0
